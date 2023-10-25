@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rigidBody;
 
+    Animator animator;
+
     public float speed = 5.0f;
 
     public float jumpForce = 8.0f;
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     void Start()
 
     {
+        animator = GetComponent<Animator>();
 
         rigidBody = GetComponent<Rigidbody2D>();
 
@@ -44,6 +47,11 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(-transform.localScale.x,
            transform.localScale.y, transform.localScale.z);
 
+        float xSpeed = Mathf.Abs(rigidBody.velocity.x);
+        animator.SetFloat("xspeed", xSpeed);
+
+        float ySpeed = rigidBody.velocity.y;
+        animator.SetFloat("yspeed", ySpeed);
     }
 
     void FixedUpdate()
