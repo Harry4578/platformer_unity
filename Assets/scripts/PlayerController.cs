@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
 
+    public AudioSource coinsound;
+
     public float speed = 5.0f;
 
     public float jumpForce = 8.0f;
@@ -144,6 +146,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "coin")
         {
             Destroy(collision.gameObject);
+                coinsound.Play();
         }
     }
 }
