@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class bullet : MonoBehaviour
+public class Bullet : MonoBehaviour
+    
 {
-    // Start is called before the first frame update
-    void Start()
+    public float bulletSpeed = 3.0f;
+
+   
+    private void Update()
     {
-        
+        transform.position += transform.right * Time.deltaTime * bulletSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Destroy(gameObject);
     }
 }

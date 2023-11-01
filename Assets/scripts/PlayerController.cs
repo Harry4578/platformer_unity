@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
     public float airControlMax = 1.5f;
 
     Vector2 boxExtents;
-
+    public Bullet BulletPrefab;
+    public Transform LaunchOffset;
 
 
     // Use this for initialization
@@ -52,6 +53,11 @@ public class PlayerController : MonoBehaviour
 
         float ySpeed = rigidBody.velocity.y;
         animator.SetFloat("yspeed", ySpeed);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(BulletPrefab, LaunchOffset.position, transform.rotation);
+        }
     }
 
     void FixedUpdate()
