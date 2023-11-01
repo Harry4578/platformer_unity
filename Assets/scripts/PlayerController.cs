@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(BulletPrefab, LaunchOffset.position, transform.rotation);
         }
+
+        float blinkval = Random.Range(0.0f, 1000.0f);
+        if (blinkval < 1.0f)
+            animator.SetTrigger("blinktrigger");
     }
 
     void FixedUpdate()
@@ -135,5 +139,11 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "coin")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }
